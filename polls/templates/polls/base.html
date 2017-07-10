@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Office of the Philadelphia City Commissioners{% endblock %}</title>
+    <!DOCTYPE html>
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootsrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="css" type="text/css" href="{% static 'images/style.css' %}"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+</head>
+<body>
+<header class="masthead">
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1><a href="#" title="scroll down for your viewing pleasure">Office of the City Commissioners</a><p class="lead">Philadelphia, PA</p></h1>
+    </div>
+    <div class="col-sm-6">
+      <div class="pull-right hidden-sm">
+        {% if user.is_authenticated %}
+        <ul><i class="glyphicon glyphicon-log-out"></i><a href="{% url 'polls:index' %}"> End Session</a></ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  </div>
+</header>
+
+
+<!-- Begin Navbar -->
+<div id="nav">
+  <div class="navbar navbar-default navbar-static">
+    <div class="container">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="glyphicon glyphicon-bar"></span>
+        <span class="glyphicon glyphicon-bar"></span>
+        <span class="glyphicon glyphicon-bar"></span>
+      </a>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{% url 'polls:index' %}">Home</a></li>
+          <li class="divider"></li>
+        </ul>
+        <ul class="nav pull-right navbar-nav">
+          <li>
+            <form class="navbar-form">
+          <input type="text" class="form-control" placeholder="Search">
+          <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+        </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /.navbar -->
+</div>
+
+
+
+{% block body %}
+{% endblock %}
+
+</body>
+</html>

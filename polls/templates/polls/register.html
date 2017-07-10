@@ -1,0 +1,23 @@
+{% extends 'polls/base.html' %}
+{% block body %}
+
+<div id="main">
+    <div id="content">
+        <section>
+            <div class="container">
+                <h1>Online Registration PIN retrieval</h1>
+                <ul>Notice: you must be a Pennsylvania registered voter in order to receive a pin. If you are not registered, please visit <a href="https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx"> PA Voter's Registration Webpage </a> </ul>
+	<form method="POST" >
+		{% csrf_token %}
+		{{ form.as_p }}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+
+		<input type="submit" name="submit" value="Submit">
+		<input type="hidden" name="next" value="{{ next }}">
+        <input type="hidden" name="next" value="{{ next }}">
+	</form>
+            </div>
+        </section>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'polls/base.html'%}
+{% load staticfiles %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div id="main">
+    <div id="content">
+        <section>
+            <div class="container">
+                <h1>General Election - November 7, 2017</h1>
+                <p>Welcome to the new Philadelphia voting platform. We are proud to be the first metropolitan city to offer an electronic voting option beginning just this year. To ensure the security and validity of your vote, a personalized 8 digit PIN is required. This PIN was mailed to your voter registration address at the time of your electronic voting request. If you do not have a personalized PIN, you can request it on the City Commissoner's website by October 10, 2017. In person registration is still active. Please visit <a href="https://www.philadelphiavotes.com/index.php?option=com_voterapp&tmpl=component">Find Your Polling Place</a> webpage to locate your polling site. If you are not registered to vote in Pennsylvania, please follow the link to register below.</p>
+                <p>
+                <li><a href="{% url 'polls:verify' %}"> <strong> Vote Today | PIN Required </strong></a></li>
+                <li><a href="{% url 'polls:register' %}"> <strong> No PIN? Sign up now! </strong></a></li>
+                </p>
+            </div>
+                <div>
+                    <p>
+            <a href="https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx">
+                    <img class="center-block" src="{% static 'images/vote.png' %}" alt="Picture of Philly Votes"/></a>
+                    </p>
+           <br>
+	    </div>
+
+{% endblock %}
