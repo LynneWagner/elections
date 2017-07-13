@@ -1,6 +1,11 @@
 {% extends 'polls/base.html' %}
-{% block main_content %}
+{% block body %}
 
+
+<div id="main">
+    <div id="content">
+        <section>
+            <div class="container">
 <h1>{{ question.question_text }}</h1>
 
 <ul>
@@ -9,6 +14,11 @@
 {% endfor %}
 </ul>
 
-<a href="{% url 'polls:detail' poll.id %}">Next Question</a>
-
+{% if question.next_question %}
+    <a href="{% url 'polls:detail' question.next_question.id %}">Next Question</a>
+{% else %}
+    <h2>Questions complete. Thank you for voting!</h2>
+{% endif %}
+            </div>
+        </section>
 {% endblock %}

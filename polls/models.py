@@ -9,13 +9,14 @@ class Question(models.Model):
     question_text = models.CharField(max_length=255)
     pub_date = models.DateTimeField()
     slug = models.SlugField(blank=True)
+    next_question = models.ForeignKey('self', null=True)
 
     def __str__(self):
         return self.question_text
 
     @property
     def name(self):
-        return self.item.name
+        return self.question_text
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -28,16 +29,6 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
-
-
-
-class UserProfile(models.Model):
-	name = models.OneToOneField(User)
-	registration_id = models.URLField(blank=True)
-	address = models.ImageField(upload_to='profile_images', blank=True)
-
-	def __str__(self):
-		return self.user.username
 
 class Poll(models.Model):
     question = models.CharField(max_length=200)
@@ -53,3 +44,11 @@ class Poll(models.Model):
     was_published_recently.admin_order_field = 'pub_date'
     was_published_recently.boolean = True
     was_published_recently.short_description = 'Published recently?'
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    username = models.URLField(blank=True)
+    address = models.TextField()
+
+    def __str__(self):
+        return self.user.username

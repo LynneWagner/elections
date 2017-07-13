@@ -13,6 +13,15 @@ class UserForm(forms.ModelForm):
 
 
 class UserProfileForm(forms.ModelForm):
+    username = forms.CharField()
+    address = forms.CharField()
+
+    #def clean_email()
     class Meta:
-        model = UserProfile
-        fields = ('name', 'registration_id', 'address')
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'username',
+            'address',
+        )
